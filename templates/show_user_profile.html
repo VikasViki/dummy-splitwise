@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%block header %}
+    <h1>{% block title %}{{ user.username }} Profile {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ user.username }} Profile</h1>
+    
+    {% if user.to_receive.items() %}
+        <br>
+        <h2>Money Lent</h2>
+        {% for username, amount in user.to_receive.items() %}
+                <li> {{ user.username }} lent Rs.{{ amount }} to {{ username }} </li>
+        {% endfor %}
+    {% else %}
+        <p>No Money Lent!</p>
+    {% endif %}
+
+    {% if user.to_pay.items() %}
+        <br>
+        <h2>Money Owed</h2>
+        {% for username, amount in user.to_pay.items() %}
+            <li> {{ user.username }} owe Rs.{{ amount }} to {{ username }} </li>
+        {% endfor %}
+    {% else %}
+        <p>No Money Owed!</p>
+    {% endif %}
+
+{% endblock %}

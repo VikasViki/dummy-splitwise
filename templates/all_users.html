@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%block header %}
+    <h1>{% block title %}All users List{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if all_users %}
+        {% for user in all_users %}
+            <li>{{ user }}  </li>
+        {% endfor %}
+    {% else %}
+        <p> No User Added </p>
+    {% endif %}
+{% endblock %}
